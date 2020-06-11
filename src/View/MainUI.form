@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="View.MainUI">
   <grid id="27dc6" binding="mainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="843" height="570"/>
+      <xy x="20" y="20" width="863" height="570"/>
     </constraints>
     <properties>
       <preferredSize width="124" height="174"/>
@@ -94,44 +94,51 @@
           </component>
         </children>
       </grid>
-      <grid id="ee357" layout-manager="CardLayout" hgap="0" vgap="0">
+      <grid id="ee357" binding="paneCard" layout-manager="CardLayout" hgap="0" vgap="0">
         <constraints border-constraint="Center"/>
         <properties>
           <background color="-4078128"/>
         </properties>
         <border type="none"/>
         <children>
-          <grid id="304bf" layout-manager="BorderLayout" hgap="0" vgap="0">
+          <grid id="6cf5c" binding="cardStudent" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
-              <card name="Card2"/>
+              <card name="Card Student"/>
             </constraints>
             <properties/>
             <border type="none"/>
             <children>
-              <component id="ef1c4" class="javax.swing.JTable" binding="table1" default-binding="true">
-                <constraints border-constraint="Center"/>
-                <properties/>
+              <component id="76548" class="javax.swing.JLabel">
+                <constraints border-constraint="North"/>
+                <properties>
+                  <focusable value="false"/>
+                  <text value="Thông tin sinh viên"/>
+                </properties>
+              </component>
+              <component id="41a71" class="javax.swing.JLabel">
+                <constraints border-constraint="West"/>
+                <properties>
+                  <text value="Label"/>
+                </properties>
               </component>
             </children>
           </grid>
-          <grid id="6cf5c" layout-manager="BorderLayout" hgap="0" vgap="0">
+          <grid id="e0995" binding="cardSchedule" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
-              <card name="Card1"/>
+              <card name="Card Schedule"/>
             </constraints>
             <properties/>
             <border type="none"/>
             <children>
-              <component id="9d423" class="javax.swing.JButton" binding="button1" default-binding="true">
-                <constraints border-constraint="Center"/>
-                <properties>
-                  <text value="Button"/>
-                </properties>
-              </component>
-              <component id="c8162" class="javax.swing.JButton" binding="button2" default-binding="true">
+              <tabbedpane id="f088e" binding="tabbedPane1" default-binding="true">
                 <constraints border-constraint="East"/>
-                <properties>
-                  <text value="Button"/>
-                </properties>
+                <properties/>
+                <border type="none"/>
+                <children/>
+              </tabbedpane>
+              <component id="e278c" class="javax.swing.JEditorPane" binding="editorPane1" default-binding="true">
+                <constraints border-constraint="West"/>
+                <properties/>
               </component>
             </children>
           </grid>
