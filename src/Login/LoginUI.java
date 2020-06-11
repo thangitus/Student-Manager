@@ -64,26 +64,20 @@ public class LoginUI extends JFrame {
       usernameField.addFocusListener(new FocusListener() {
          @Override
          public void focusGained(FocusEvent e) {
-            if (usernameField.getText()
-                             .equals(UIUtils.PLACEHOLDER_TEXT_USERNAME)) {
-               usernameField.setText("");
-            }
-            usernameField.setForeground(Color.white);
-            usernameField.setBorderColor(UIUtils.COLOR_INTERACTIVE);
+            onFocusChangeUserName("", UIUtils.COLOR_INTERACTIVE);
          }
 
          @Override
          public void focusLost(FocusEvent e) {
-            if (usernameField.getText()
-                             .isEmpty()) {
-               usernameField.setText(UIUtils.PLACEHOLDER_TEXT_USERNAME);
-            }
-            usernameField.setForeground(UIUtils.COLOR_OUTLINE);
-            usernameField.setBorderColor(UIUtils.COLOR_OUTLINE);
+            onFocusChangeUserName(UIUtils.PLACEHOLDER_TEXT_USERNAME, UIUtils.COLOR_OUTLINE);
          }
       });
 
       mainJPanel.add(usernameField);
+   }
+   private void onFocusChangeUserName(String placeholderTextUsername, Color colorOutline) {
+      usernameField.setText(placeholderTextUsername);
+      usernameField.setBorderColor(colorOutline);
    }
    private void addPasswordTextField() {
       passwordField = new TextFieldPassword();
@@ -92,13 +86,12 @@ public class LoginUI extends JFrame {
       passwordField.addFocusListener(new FocusListener() {
          @Override
          public void focusGained(FocusEvent e) {
-            passwordField.setForeground(Color.white);
             passwordField.setBorderColor(UIUtils.COLOR_INTERACTIVE);
+            onFocusChangeUserName(UIUtils.PLACEHOLDER_TEXT_USERNAME, UIUtils.COLOR_OUTLINE);
          }
 
          @Override
          public void focusLost(FocusEvent e) {
-            passwordField.setForeground(UIUtils.COLOR_OUTLINE);
             passwordField.setBorderColor(UIUtils.COLOR_OUTLINE);
          }
       });
