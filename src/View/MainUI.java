@@ -7,6 +7,8 @@ import com.intellij.uiDesigner.core.Spacer;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainUI extends JFrame {
    private JPanel mainPanel;
