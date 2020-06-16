@@ -1,6 +1,7 @@
 package Data.DAO.Impl;
 
 import Data.DAO.ChiTietMonHocDAO;
+import Data.HibernateUtils;
 import Data.entities.ChiTietMonHoc;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -10,6 +11,7 @@ import java.util.Optional;
 
 public class ChiTietMonHocDAOImpl implements ChiTietMonHocDAO {
     private static Session session;
+
 
     public static void setSession(Session session){
         ChiTietMonHocDAOImpl.session = session;

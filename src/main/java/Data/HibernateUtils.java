@@ -13,12 +13,10 @@ public class HibernateUtils {
     // Hibernate 5:
     private static SessionFactory buildSessionFactory() {
         try {
-            // Tạo đối tượng ServiceRegistry từ hibernate.cfg.xml
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()//
                                                                                   .configure("hibernate.cfg.xml").build();
 
 
-            // Tạo nguồn siêu dữ liệu (metadata) từ ServiceRegistry
             Metadata metadata = new MetadataSources(serviceRegistry).getMetadataBuilder().build();
 
             return metadata.getSessionFactoryBuilder().build();
@@ -34,7 +32,6 @@ public class HibernateUtils {
     }
 
     public static void shutdown() {
-        // Giải phóng cache và Connection Pools.
         getSessionFactory().close();
     }
 

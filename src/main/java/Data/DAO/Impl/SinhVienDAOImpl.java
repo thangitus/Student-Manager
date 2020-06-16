@@ -1,6 +1,7 @@
 package Data.DAO.Impl;
 
 import Data.DAO.SinhVienDAO;
+import Data.HibernateUtils;
 import Data.entities.SinhVien;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -9,11 +10,9 @@ import java.util.List;
 
 public class SinhVienDAOImpl implements SinhVienDAO {
     private static Session session;
-
-    public static void setSession(Session session){
+    public static void setSession(Session session) {
         SinhVienDAOImpl.session = session;
     }
-
     @Override
     public List<SinhVien> getAll() {
         String sql = String.format("from %s", SinhVien.class.getName());

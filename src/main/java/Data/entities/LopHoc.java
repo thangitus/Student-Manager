@@ -11,6 +11,7 @@ import java.util.Objects;
 public class LopHoc {
     private String maLop;
 
+
     @Id
     @Column(name = "MaLop")
     public String getMaLop() {

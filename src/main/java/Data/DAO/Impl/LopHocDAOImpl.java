@@ -1,6 +1,7 @@
 package Data.DAO.Impl;
 
 import Data.DAO.LopHocDAO;
+import Data.HibernateUtils;
 import Data.entities.LopHoc;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -10,11 +11,9 @@ import java.util.List;
 public class LopHocDAOImpl implements LopHocDAO {
 
     private static Session session;
-
-    public static void setSession(Session session){
+    public static void setSession(Session session) {
         LopHocDAOImpl.session = session;
     }
-
     @Override
     public void insert(LopHoc lh) {
         session.persist(lh);

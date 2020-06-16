@@ -3,6 +3,7 @@ package Data.DAO.Impl;
 import Data.DAO.ChiTietLopHocDAO;
 import Data.DAO.ChiTietMonHocDAO;
 import Data.DAO.SinhVienDAO;
+import Data.HibernateUtils;
 import Data.entities.ChiTietLopHoc;
 import Data.entities.ChiTietMonHoc;
 import Data.entities.SinhVien;
@@ -23,7 +24,6 @@ public class ChiTietLopHocDAOImpl implements ChiTietLopHocDAO {
     public void insert(ChiTietLopHoc ctlh) {
         session.persist(ctlh);
         ChiTietMonHocDAOImpl.setSession(session);
-        SinhVienDAOImpl.setSession(session);
         ChiTietMonHocDAO ctmhDAO = new ChiTietMonHocDAOImpl();
         SinhVienDAO svDAO = new SinhVienDAOImpl();
 
