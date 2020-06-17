@@ -9,9 +9,11 @@ import Data.DAO.Impl.LopHocDAOImpl;
 import Data.DAO.Impl.SinhVienDAOImpl;
 import Data.DAO.LopHocDAO;
 import Data.DAO.SinhVienDAO;
+import Data.DAO.TaiKhoanDAO;
 import Data.HibernateUtils;
 import Data.entities.LopHoc;
 import Data.entities.SinhVien;
+import View.Toaster.Toaster;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -40,7 +42,7 @@ public class TeacherUI extends JFrame {
    public TeacherUI() {
       initComponents();
       addOptionToList();
-      changeOption(0);
+      changeOption(1);
    }
    private void addOptionToList() {
       listOption = new ArrayList<>();
@@ -194,11 +196,11 @@ public class TeacherUI extends JFrame {
       jLabel32 = new javax.swing.JLabel();
       jLabel40 = new javax.swing.JLabel();
       jLabel41 = new javax.swing.JLabel();
-      textFieldPass = new javax.swing.JTextField();
-      textFieldRePass = new javax.swing.JTextField();
       jLabel42 = new javax.swing.JLabel();
       btnSavePass = new javax.swing.JButton();
       btnLogOut = new javax.swing.JButton();
+      jPasswordField2 = new javax.swing.JPasswordField();
+      jPasswordField1 = new javax.swing.JPasswordField();
 
       setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
       setTitle("Student Manager");
@@ -216,6 +218,8 @@ public class TeacherUI extends JFrame {
          }
       });
 
+      jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+      jLabel1.setForeground(new java.awt.Color(255, 255, 255));
       jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
       jLabel1.setText("Sinh viên");
 
@@ -255,6 +259,8 @@ public class TeacherUI extends JFrame {
       jSeparator7.setAlignmentY(0.0F);
       jSeparator7.setPreferredSize(new java.awt.Dimension(50, 1));
 
+      jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+      jLabel6.setForeground(new java.awt.Color(255, 255, 255));
       jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
       jLabel6.setText("Thời khóa biểu");
 
@@ -294,6 +300,8 @@ public class TeacherUI extends JFrame {
          }
       });
 
+      jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+      jLabel7.setForeground(new java.awt.Color(255, 255, 255));
       jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
       jLabel7.setText("Danh sách lớp");
 
@@ -330,6 +338,8 @@ public class TeacherUI extends JFrame {
          }
       });
 
+      jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+      jLabel8.setForeground(new java.awt.Color(255, 255, 255));
       jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
       jLabel8.setText("Bảng điểm");
 
@@ -374,6 +384,8 @@ public class TeacherUI extends JFrame {
          }
       });
 
+      jLabel10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+      jLabel10.setForeground(new java.awt.Color(255, 255, 255));
       jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
       jLabel10.setText("Phúc khảo");
 
@@ -418,6 +430,8 @@ public class TeacherUI extends JFrame {
          }
       });
 
+      jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+      jLabel2.setForeground(new java.awt.Color(255, 255, 255));
       jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
       jLabel2.setText("Tài khoản");
 
@@ -591,7 +605,7 @@ public class TeacherUI extends JFrame {
       jLabel17.setText("Thời khóa biểu");
       jLabel17.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-      tableSchedule.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{{null, null, null, null}, {null, null, null, null}, {null, null, null, null}, {null, null, null, null}}, new String[]{"Title 1", "Title 2", "Title 3", "Title 4"}));
+      tableSchedule.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{{null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}}, new String[]{"STT", "Mã môn", "Tên môn", "Phòng học", "Lớp"}));
       jScrollPane2.setViewportView(tableSchedule);
 
       boxClassSchedule.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
@@ -605,15 +619,22 @@ public class TeacherUI extends JFrame {
       boxSubjectSchedule.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
 
       btnAddSchedule.setText("Thêm thời khóa biểu");
+      btnAddSchedule.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            btnAddScheduleMouseClicked(evt);
+         }
+      });
 
       btnDeleteStudentSchedule.setText("Xóa sinh viên");
+      btnDeleteStudentSchedule.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            btnDeleteStudentScheduleMouseClicked(evt);
+         }
+      });
 
       javax.swing.GroupLayout scheduleCardLayout = new javax.swing.GroupLayout(scheduleCard);
       scheduleCard.setLayout(scheduleCardLayout);
       scheduleCardLayout.setHorizontalGroup(scheduleCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                              .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, scheduleCardLayout.createSequentialGroup()
-                                                                                                                                      .addGap(106, 106, 106)
-                                                                                                                                      .addComponent(jScrollPane2))
                                                               .addGroup(scheduleCardLayout.createSequentialGroup()
                                                                                           .addGroup(scheduleCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                                                                       .addGroup(scheduleCardLayout.createSequentialGroup()
@@ -633,7 +654,10 @@ public class TeacherUI extends JFrame {
                                                                                                                                                                                                           .addComponent(btnAddSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                                                                                                                                                           .addGap(18, 18, 18)
                                                                                                                                                                                                           .addComponent(btnDeleteStudentSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                                                                          .addGap(0, 148, Short.MAX_VALUE)));
+                                                                                          .addGap(0, 148, Short.MAX_VALUE))
+                                                              .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, scheduleCardLayout.createSequentialGroup()
+                                                                                                                                      .addContainerGap()
+                                                                                                                                      .addComponent(jScrollPane2)));
       scheduleCardLayout.setVerticalGroup(scheduleCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addGroup(scheduleCardLayout.createSequentialGroup()
                                                                                         .addContainerGap()
@@ -649,8 +673,7 @@ public class TeacherUI extends JFrame {
                                                                                                                     .addComponent(btnAddSchedule)
                                                                                                                     .addComponent(btnDeleteStudentSchedule))
                                                                                         .addGap(18, 18, 18)
-                                                                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                        .addContainerGap(71, Short.MAX_VALUE)));
+                                                                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)));
 
       mainPanel.add(scheduleCard, "Schedule Card");
       scheduleCard.getAccessibleContext()
@@ -908,6 +931,11 @@ public class TeacherUI extends JFrame {
       jLabel42.setText("Xác nhận mật khẩu");
 
       btnSavePass.setText("Lưu lại");
+      btnSavePass.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            btnSavePassMouseClicked(evt);
+         }
+      });
 
       btnLogOut.setText("Đăng xuất");
 
@@ -921,34 +949,35 @@ public class TeacherUI extends JFrame {
                                                             .addGroup(accountCardLayout.createSequentialGroup()
                                                                                        .addGap(67, 67, 67)
                                                                                        .addGroup(accountCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                                  .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                                  .addComponent(btnSavePass, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                                                                   .addGroup(accountCardLayout.createSequentialGroup()
-                                                                                                                                             .addGroup(accountCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                                                                                                                                        .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                                                                                             .addGroup(accountCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                                                                                        .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                                                                                                                         .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                        .addComponent(textFieldPass)
-                                                                                                                                                                        .addComponent(textFieldRePass, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                                                                                                                                                                        .addComponent(jLabel42))
+                                                                                                                                                                        .addComponent(jLabel42)
+                                                                                                                                                                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                                                                                              .addGap(206, 206, 206)
-                                                                                                                                             .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                                                  .addComponent(btnSavePass, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                                                                             .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                                                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
       accountCardLayout.setVerticalGroup(accountCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                           .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, accountCardLayout.createSequentialGroup()
                                                                                                                                  .addContainerGap()
                                                                                                                                  .addComponent(jLabel32)
                                                                                                                                  .addGap(92, 92, 92)
-                                                                                                                                 .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                 .addGap(18, 18, 18)
-                                                                                                                                 .addComponent(jLabel41)
-                                                                                                                                 .addGap(0, 0, 0)
-                                                                                                                                 .addGroup(accountCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                                                                                            .addComponent(textFieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                            .addComponent(btnLogOut))
+                                                                                                                                 .addGroup(accountCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                                                                                                            .addGroup(accountCardLayout.createSequentialGroup()
+                                                                                                                                                                                       .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                                                                                                       .addGap(18, 18, 18)
+                                                                                                                                                                                       .addComponent(jLabel41)
+                                                                                                                                                                                       .addGap(0, 0, 0)
+                                                                                                                                                                                       .addComponent(btnLogOut))
+                                                                                                                                                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                                                                                  .addGap(18, 18, 18)
                                                                                                                                  .addComponent(jLabel42)
-                                                                                                                                 .addGap(0, 0, 0)
-                                                                                                                                 .addComponent(textFieldRePass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                 .addGap(18, 18, 18)
+                                                                                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                                                                 .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                                                 .addGap(14, 14, 14)
                                                                                                                                  .addComponent(btnSavePass)
                                                                                                                                  .addContainerGap(331, Short.MAX_VALUE)));
 
@@ -962,7 +991,7 @@ public class TeacherUI extends JFrame {
                                                       .addGap(1, 1, 1)
                                                       .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
       layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sidePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(sidePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
                                     .addComponent(mainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
       pack();
@@ -1091,6 +1120,44 @@ public class TeacherUI extends JFrame {
    private void boxClassAddStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boxClassAddStudentMouseClicked
    }//GEN-LAST:event_boxClassAddStudentMouseClicked
 
+   private void btnAddScheduleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddScheduleMouseClicked
+      FileDialog dialog = new FileDialog((Dialog) null, "Select IMG");
+      dialog.setMode(FileDialog.LOAD);
+      dialog.setVisible(true);
+      try {
+         BufferedReader reader = new BufferedReader(new FileReader(dialog.getDirectory() + dialog.getFile(), StandardCharsets.UTF_8));
+         reader.readLine();
+         while (reader.ready()) {
+            String line = reader.readLine();
+            String[] parts = line.split(",");
+            String maMon = parts[0];
+            String tenMon = parts[1];
+            String phongHoc = parts[2];
+         }
+         reader.close();
+      } catch (FileNotFoundException e) {
+         System.out.println("File not found!");
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+
+   }//GEN-LAST:event_btnAddScheduleMouseClicked
+
+   private void btnDeleteStudentScheduleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteStudentScheduleMouseClicked
+      // TODO add your handling code here:
+   }//GEN-LAST:event_btnDeleteStudentScheduleMouseClicked
+
+   private void btnSavePassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSavePassMouseClicked
+      // TODO add your handling code here:
+      String pass1, pass2;
+      pass1 = String.valueOf(jPasswordField1.getPassword());
+      pass2 = String.valueOf(jPasswordField2.getPassword());
+      if (pass1.equals(pass2)) {
+      } else
+         Toast.makeText(this, "Mật khẩu không trùng khớp", Toast.Style.SUCCESS).display();
+
+   }//GEN-LAST:event_btnSavePassMouseClicked
+
    /**
     * @param args
     *         the command line arguments
@@ -1132,7 +1199,6 @@ public class TeacherUI extends JFrame {
    }
 
    private List<JPanel> listOption;
-
    // Variables declaration - do not modify//GEN-BEGIN:variables
    private javax.swing.JPanel accountCard;
    private javax.swing.JPanel accountOption;
@@ -1189,6 +1255,8 @@ public class TeacherUI extends JFrame {
    private javax.swing.JLabel jLabel7;
    private javax.swing.JLabel jLabel8;
    private javax.swing.JLabel jLabel9;
+   private javax.swing.JPasswordField jPasswordField1;
+   private javax.swing.JPasswordField jPasswordField2;
    private javax.swing.JScrollPane jScrollPane1;
    private javax.swing.JScrollPane jScrollPane2;
    private javax.swing.JScrollPane jScrollPane3;
@@ -1225,8 +1293,6 @@ public class TeacherUI extends JFrame {
    private javax.swing.JTextField textFieldEnd;
    private javax.swing.JTextField textFieldMSSV;
    private javax.swing.JTextField textFieldName;
-   private javax.swing.JTextField textFieldPass;
-   private javax.swing.JTextField textFieldRePass;
    private javax.swing.JTextField textFieldStart;
    // End of variables declaration//GEN-END:variables
 }
