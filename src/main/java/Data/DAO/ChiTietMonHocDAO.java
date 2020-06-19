@@ -15,4 +15,5 @@ public interface ChiTietMonHocDAO {
     public ChiTietMonHoc getByMaLopMaMonMssv(String maLop, String maMon, String mssv);
 
     public void updateDiem(ChiTietMonHoc ctmh, Double DiemGK, Double DiemCK, Double DiemKhac, Double DiemTong);
+    public void delete(ChiTietMonHoc ctmh);
 }

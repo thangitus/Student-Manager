@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="spring.jpa.properties.hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/hibernateexercise</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">admin</property>
+        <mapping class="Data.entities.ChiTietLopHoc"/>
+        <mapping class="Data.entities.ChiTietMonHoc"/>
+        <mapping class="Data.entities.LopHoc"/>
+        <mapping class="Data.entities.MonHoc"/>
+        <mapping class="Data.entities.PhucKhao"/>
+        <mapping class="Data.entities.SinhVien"/>
+        <mapping class="Data.entities.TaiKhoan"/>
+
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>

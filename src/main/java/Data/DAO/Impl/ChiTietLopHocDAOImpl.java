@@ -25,6 +25,7 @@ public class ChiTietLopHocDAOImpl implements ChiTietLopHocDAO {
         session.persist(ctlh);
         ChiTietMonHocDAOImpl.setSession(session);
         ChiTietMonHocDAO ctmhDAO = new ChiTietMonHocDAOImpl();
+        SinhVienDAOImpl.setSession(session);
         SinhVienDAO svDAO = new SinhVienDAOImpl();
 
         List<SinhVien> listSV = svDAO.getByMaLop(ctlh.getMaLop());

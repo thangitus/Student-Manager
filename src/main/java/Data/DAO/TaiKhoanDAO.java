@@ -10,4 +10,8 @@ public interface TaiKhoanDAO {
    public boolean find(TaiKhoan taiKhoan);
 
    public void insertAll(List<TaiKhoan> list);
+
+   public void updateMatKhau(TaiKhoan taiKhoan, String matKhau);
+
+   public TaiKhoan getByTaiKhoan(String taiKhoan);
 }

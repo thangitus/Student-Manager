@@ -23,7 +23,7 @@ public class DataUtils {
             sv.setMaLop(maLop);
             return sv;
         }
-
+   
         public static List<SinhVien> getAll(Session session){
             String sql = String.format("Select s from %s s", SinhVien.class.getName());
             Query<SinhVien> query = session.createQuery(sql);

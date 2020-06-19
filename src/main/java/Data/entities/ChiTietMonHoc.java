@@ -10,7 +10,6 @@ public class ChiTietMonHoc {
    private String maLop;
    private String maMon;
    private String mssv;
-   private String tenMonHoc;
    private Double diemGk;
    private Double diemCk;
    private Double diemKhac;
@@ -46,14 +45,6 @@ public class ChiTietMonHoc {
       this.mssv = mssv;
    }
 
-   @Basic
-   @Column(name="TenMonHoc")
-   public String getTenMonHoc() {
-      return tenMonHoc;
-   }
-   public void setTenMonHoc(String tenMonHoc) {
-      this.tenMonHoc = tenMonHoc;
-   }
    @Basic
    @Column(name = "DiemGK")
    public Double getDiemGk() {
@@ -101,7 +92,7 @@ public class ChiTietMonHoc {
       if (o == null || getClass() != o.getClass())
          return false;
       ChiTietMonHoc that = (ChiTietMonHoc) o;
-      return Objects.equals(maLop, that.maLop) && Objects.equals(maMon, that.maMon) && Objects.equals(mssv, that.mssv) && Objects.equals(tenMonHoc, that.tenMonHoc) && Objects.equals(diemGk, that.diemGk) && Objects.equals(diemCk, that.diemCk) && Objects.equals(diemKhac, that.diemKhac) && Objects.equals(diemTong, that.diemTong);
+      return Objects.equals(maLop, that.maLop) && Objects.equals(maMon, that.maMon) && Objects.equals(mssv, that.mssv) && Objects.equals(diemGk, that.diemGk) && Objects.equals(diemCk, that.diemCk) && Objects.equals(diemKhac, that.diemKhac) && Objects.equals(diemTong, that.diemTong);
    }
 
    @Override

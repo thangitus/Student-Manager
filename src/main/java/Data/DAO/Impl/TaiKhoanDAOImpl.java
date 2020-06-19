@@ -1,6 +1,7 @@
 package Data.DAO.Impl;
 
 import Data.DAO.TaiKhoanDAO;
+import Data.entities.SinhVien;
 import Data.entities.TaiKhoan;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -29,5 +30,18 @@ class TaiKhoanDAOImpl implements TaiKhoanDAO {
       list.forEach(e -> {
          session.persist(e);
       });
+   }
+   @Override
+   public void updateMatKhau(TaiKhoan taiKhoan, String matKhau) {
+      taiKhoan.setMatKhau(matKhau);
+      session.flush();
+   }
+   @Override
+   public TaiKhoan getByTaiKhoan(String taiKhoan) {
+      String sql = String.format("from %s tk where tk.TaiKhoan = :taiKhoan", TaiKhoan.class.getName());
+      Query query = session.createQuery(sql);
+      query.setParameter("taiKhoan", taiKhoan);
+
+      return (TaiKhoan) query.getSingleResult();
    }
 }
