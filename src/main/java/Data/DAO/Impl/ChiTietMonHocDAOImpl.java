@@ -65,23 +65,18 @@ public class ChiTietMonHocDAOImpl implements ChiTietMonHocDAO {
       String sql;
       Query query;
       if (maLop != null && maMon != null) {
-         sql = String.format("from %s ctmh where ctmh.MaLop = :maLop and ctmh.MaMon = :maMon", ChiTietMonHoc.class.getName());
+         sql = String.format("from %s ctmh where ctmh.maLop = :maLop and ctmh.maMon = :maMon", ChiTietMonHoc.class.getName());
          query = session.createQuery(sql);
          query.setParameter("maLop", maLop);
          query.setParameter("maMon", maMon);
-      } else if (maLop != null) {
-         sql = String.format("from %s ctmh where ctmh.MaLop = :maLop", ChiTietMonHoc.class.getName());
-         query = session.createQuery(sql);
-         query.setParameter("maLop", maLop);
       } else {
-         sql = String.format("from %s ctmh where ctmh.MaMon = :maMon", ChiTietMonHoc.class.getName());
+         sql = String.format("from %s ctmh where ctmh.maLop = :maLop", ChiTietMonHoc.class.getName());
          query = session.createQuery(sql);
-         query.setParameter("maMon", maMon);
+         query.setParameter("maLop", maLop);
       }
       List<ChiTietMonHoc> result = query.getResultList();
       return result;
    }
-
 
    @Override
    public ChiTietMonHoc getByMaLopMaMonMssv(String maLop, String maMon, String mssv) {

@@ -15,6 +15,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -80,6 +81,7 @@ public class TeacherUI extends JFrame {
             break;
          case 2:
             showListClass(null, null);
+            setupBoxClass();
             cardLayout.show(mainPanel, "Class Card");
             break;
          case 3:
@@ -506,7 +508,7 @@ public class TeacherUI extends JFrame {
          }
       });
 
-      tableListStudent.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{{null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}}, new String[]{"STT", "MSSV", "Họ tên", "Giới tính", "CMND", "Mã lớp"}));
+      tableListStudent.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{{null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}}, new String[]{"STT", "MSSV", "Họ tên", "Giới tính", "CMND", "Mã lớp"}));
       jScrollPane1.setViewportView(tableListStudent);
 
       btnSaveAddStudent.setText("Lưu lại");
@@ -596,7 +598,7 @@ public class TeacherUI extends JFrame {
       jLabel17.setText("Thời khóa biểu");
       jLabel17.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-      tableSchedule.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{{null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}}, new String[]{"STT", "Mã môn", "Tên môn", "Phòng học", "Lớp"}));
+      tableSchedule.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{{null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}}, new String[]{"STT", "Mã môn", "Tên môn", "Phòng học", "Lớp"}));
       jScrollPane2.setViewportView(tableSchedule);
 
       btnAddSchedule.setText("Thêm thời khóa biểu");
@@ -642,16 +644,26 @@ public class TeacherUI extends JFrame {
       jLabel18.setText("Danh sách lớp");
       jLabel18.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-      tableClass.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{{null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}, {null, null, null, null, null}}, new String[]{"STT", "MSSV", "Họ tên", "Lớp", "Môn"}));
+      tableClass.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{{null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}}, new String[]{"STT", "MSSV", "Họ tên", "Lớp", "Môn", "Mã môn"}));
       jScrollPane3.setViewportView(tableClass);
 
       boxListClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
+      boxListClass.addItemListener(new java.awt.event.ItemListener() {
+         public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            boxListClassItemStateChanged(evt);
+         }
+      });
 
       jLabel14.setText("Lớp");
 
       jLabel15.setText("Môn học");
 
-      boxSubjectClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
+      boxSubjectClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Chọn môn học"}));
+      boxSubjectClass.addItemListener(new java.awt.event.ItemListener() {
+         public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            boxSubjectClassItemStateChanged(evt);
+         }
+      });
 
       btnDeleteStudent.setText("Xóa sinh viên");
 
@@ -670,16 +682,19 @@ public class TeacherUI extends JFrame {
                                                                                                           .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                                  .addGap(18, 18, 18)
                                                                                  .addGroup(classCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                          .addComponent(boxSubjectClass, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                          .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                 .addGap(27, 27, 27)
-                                                                                 .addComponent(btnDeleteStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+                                                                                                          .addGroup(classCardLayout.createSequentialGroup()
+                                                                                                                                   .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                                                   .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                                                                          .addGroup(classCardLayout.createSequentialGroup()
+                                                                                                                                   .addComponent(boxSubjectClass, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                                                   .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                                                                                   .addComponent(btnDeleteStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                                                   .addGap(46, 46, 46)))));
       classCardLayout.setVerticalGroup(classCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, classCardLayout.createSequentialGroup()
                                                                                                                            .addContainerGap()
                                                                                                                            .addComponent(jLabel18)
-                                                                                                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                                                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                                                                                                                            .addGroup(classCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                                                                                                     .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
                                                                                                                                                     .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -1030,20 +1045,16 @@ public class TeacherUI extends JFrame {
       SinhVienDAOImpl.setSession(session);
       SinhVienDAO sinhVienDAO = new SinhVienDAOImpl();
       List<SinhVien> sinhVienList = sinhVienDAO.getAll();
+      DefaultTableModel tableModel = (DefaultTableModel) tableListStudent.getModel();
+      tableModel.setRowCount(sinhVienList.size());
       for (int i = 0; i < sinhVienList.size(); i++) {
          SinhVien sinhVien = sinhVienList.get(i);
-         tableListStudent.getModel()
-                         .setValueAt(i + "", i, 0);
-         tableListStudent.getModel()
-                         .setValueAt(sinhVien.getMssv(), i, 1);
-         tableListStudent.getModel()
-                         .setValueAt(sinhVien.getHoVaTen(), i, 2);
-         tableListStudent.getModel()
-                         .setValueAt(sinhVien.getGioiTinh(), i, 3);
-         tableListStudent.getModel()
-                         .setValueAt(sinhVien.getCmnd(), i, 4);
-         tableListStudent.getModel()
-                         .setValueAt(sinhVien.getMaLop(), i, 5);
+         tableModel.setValueAt(i + "", i, 0);
+         tableModel.setValueAt(sinhVien.getMssv(), i, 1);
+         tableModel.setValueAt(sinhVien.getHoVaTen(), i, 2);
+         tableModel.setValueAt(sinhVien.getGioiTinh(), i, 3);
+         tableModel.setValueAt(sinhVien.getCmnd(), i, 4);
+         tableModel.setValueAt(sinhVien.getMaLop(), i, 5);
       }
       session.close();
    }
@@ -1057,22 +1068,18 @@ public class TeacherUI extends JFrame {
       ChiTietLopHocDAO dao = new ChiTietLopHocDAOImpl();
       MonHocDAO monHocDAO = new MonHocDAOImpl();
       List<ChiTietLopHoc> chiTietLopHocList = dao.getAll();
+      DefaultTableModel tableModel = (DefaultTableModel) tableSchedule.getModel();
+      tableModel.setRowCount(chiTietLopHocList.size());
       for (int i = 0; i < chiTietLopHocList.size(); i++) {
          ChiTietLopHoc chiTietLopHoc = chiTietLopHocList.get(i);
          MonHoc monHoc = monHocDAO.getByMaMon(chiTietLopHoc.getMaMon());
-         tableSchedule.getModel()
-                      .setValueAt(String.valueOf(i + 1), i, 0);
-         tableSchedule.getModel()
-                      .setValueAt(monHoc.getMaMon(), i, 1);
-         tableSchedule.getModel()
-                      .setValueAt(monHoc.getTenMon(), i, 2);
-         tableSchedule.getModel()
-                      .setValueAt(chiTietLopHoc.getPhongHoc(), i, 3);
-         tableSchedule.getModel()
-                      .setValueAt(chiTietLopHoc.getMaLop(), i, 4);
+         tableModel.setValueAt(String.valueOf(i + 1), i, 0);
+         tableModel.setValueAt(monHoc.getMaMon(), i, 1);
+         tableModel.setValueAt(monHoc.getTenMon(), i, 2);
+         tableModel.setValueAt(chiTietLopHoc.getPhongHoc(), i, 3);
+         tableModel.setValueAt(chiTietLopHoc.getMaLop(), i, 4);
       }
       session.close();
-
    }
    private void showListClass(String maLop, String maMon) {
       Session session = HibernateUtils.getSessionFactory()
@@ -1086,21 +1093,34 @@ public class TeacherUI extends JFrame {
       ChiTietMonHocDAO chiTietMonHocDAO = new ChiTietMonHocDAOImpl();
       SinhVienDAO sinhVienDAO = new SinhVienDAOImpl();
       List<ChiTietMonHoc> chiTietMonHocList = chiTietMonHocDAO.getByMaLopMaMon(maLop, maMon);
+      DefaultTableModel tableModel = (DefaultTableModel) tableClass.getModel();
+      tableModel.setRowCount(chiTietMonHocList.size());
       for (int i = 0; i < chiTietMonHocList.size(); i++) {
          ChiTietMonHoc chiTietMonHoc = chiTietMonHocList.get(i);
          MonHoc monHoc = monHocDAO.getByMaMon(chiTietMonHoc.getMaMon());
          SinhVien sinhVien = sinhVienDAO.getByMSSV(chiTietMonHoc.getMssv());
-         tableClass.getModel()
-                   .setValueAt(String.valueOf(i + 1), i, 0);
-         tableClass.getModel()
-                   .setValueAt(sinhVien.getMssv(), i, 1);
-         tableClass.getModel()
-                   .setValueAt(sinhVien.getHoVaTen(), i, 2);
-         tableClass.getModel()
-                   .setValueAt(chiTietMonHoc.getMaLop(), i, 3);
-         tableClass.getModel()
-                   .setValueAt(monHoc.getTenMon(), i, 4);
+         tableModel.setValueAt(String.valueOf(i + 1), i, 0);
+         tableModel.setValueAt(sinhVien.getMssv(), i, 1);
+         tableModel.setValueAt(sinhVien.getHoVaTen(), i, 2);
+         tableModel.setValueAt(chiTietMonHoc.getMaLop(), i, 3);
+         tableModel.setValueAt(monHoc.getTenMon(), i, 4);
+         tableModel.setValueAt(monHoc.getMaMon(), i, 5);
       }
+      session.close();
+   }
+   private void setupBoxClass() {
+      Session session = HibernateUtils.getSessionFactory()
+                                      .openSession();
+      session.getTransaction()
+             .begin();
+      LopHocDAOImpl.setSession(session);
+      LopHocDAO lopHocDAO = new LopHocDAOImpl();
+      List<LopHoc> lopHocList = lopHocDAO.getAll();
+      List<String> model = new ArrayList<>();
+      model.add("Chọn lớp");
+      for (LopHoc lopHoc : lopHocList)
+         model.add(lopHoc.getMaLop());
+      boxListClass.setModel(new DefaultComboBoxModel<>(model.toArray(new String[0])));
       session.close();
    }
    private void btnSaveAddStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveAddStudentMouseClicked
@@ -1188,6 +1208,37 @@ public class TeacherUI extends JFrame {
               .display();
 
    }//GEN-LAST:event_btnSavePassMouseClicked
+
+   private void boxListClassItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_boxListClassItemStateChanged
+      // TODO add your handling code here:
+      if (boxListClass.getSelectedIndex() == 0) {
+         showListClass(null, null);
+         boxSubjectClass.setModel(new DefaultComboBoxModel<>(new String[]{"Chọn môn học"}));
+         return;
+      }
+      Session session = HibernateUtils.getSessionFactory()
+                                      .openSession();
+      session.getTransaction()
+             .begin();
+      ChiTietLopHocDAOImpl.setSession(session);
+      ChiTietLopHocDAO chiTietLopHocDAO = new ChiTietLopHocDAOImpl();
+      List<ChiTietLopHoc> chiTietLopHocList = chiTietLopHocDAO.getByMaLop((String) boxListClass.getSelectedItem());
+      List<String> model = new ArrayList<>();
+      model.add("Chọn môn học");
+      for (ChiTietLopHoc chiTietLopHoc : chiTietLopHocList)
+         model.add(chiTietLopHoc.getMaMon());
+      boxSubjectClass.setModel(new DefaultComboBoxModel<>(model.toArray(new String[0])));
+      session.close();
+      showListClass((String) boxListClass.getSelectedItem(), null);
+   }//GEN-LAST:event_boxListClassItemStateChanged
+
+   private void boxSubjectClassItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_boxSubjectClassItemStateChanged
+      // TODO add your handling code here:
+      if (boxSubjectClass.getSelectedIndex() == 0)
+         showListClass((String) boxListClass.getSelectedItem(), null);
+      else
+         showListClass((String) boxListClass.getSelectedItem(), (String) boxSubjectClass.getSelectedItem());
+   }//GEN-LAST:event_boxSubjectClassItemStateChanged
 
    /**
     * @param args
