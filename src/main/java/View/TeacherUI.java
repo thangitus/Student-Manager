@@ -17,6 +17,7 @@ import org.hibernate.cfg.Configuration;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ItemEvent;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -37,7 +38,7 @@ public class TeacherUI extends JFrame {
    public TeacherUI() {
       initComponents();
       addOptionToList();
-      changeOption(1);
+      changeOption(3);
    }
    private void addOptionToList() {
       listOption = new ArrayList<>();
@@ -76,7 +77,7 @@ public class TeacherUI extends JFrame {
             boxClassAddStudent.setModel(new DefaultComboBoxModel<>(model.toArray(new String[0])));
             break;
          case 1:
-            showListSubject();
+            showListSubject(null);
             cardLayout.show(mainPanel, "Schedule Card");
             break;
          case 2:
@@ -85,6 +86,7 @@ public class TeacherUI extends JFrame {
             cardLayout.show(mainPanel, "Class Card");
             break;
          case 3:
+            setupScoreCard(null, null, 0);
             cardLayout.show(mainPanel, "Score Card");
             break;
          case 4:
@@ -147,6 +149,7 @@ public class TeacherUI extends JFrame {
       jScrollPane2 = new javax.swing.JScrollPane();
       tableSchedule = new javax.swing.JTable();
       btnAddSchedule = new javax.swing.JButton();
+      boxClass = new javax.swing.JComboBox<>();
       classCard = new javax.swing.JPanel();
       jLabel18 = new javax.swing.JLabel();
       jScrollPane3 = new javax.swing.JScrollPane();
@@ -165,6 +168,8 @@ public class TeacherUI extends JFrame {
       labelPass = new javax.swing.JLabel();
       jLabel25 = new javax.swing.JLabel();
       labelFail = new javax.swing.JLabel();
+      btnAddScore = new javax.swing.JButton();
+      boxResult = new javax.swing.JComboBox<>();
       complainCard = new javax.swing.JPanel();
       jLabel22 = new javax.swing.JLabel();
       jScrollPane5 = new javax.swing.JScrollPane();
@@ -608,29 +613,38 @@ public class TeacherUI extends JFrame {
          }
       });
 
+      boxClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Chọn lớp"}));
+      boxClass.addItemListener(new java.awt.event.ItemListener() {
+         public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            boxClassItemStateChanged(evt);
+         }
+      });
+
       javax.swing.GroupLayout scheduleCardLayout = new javax.swing.GroupLayout(scheduleCard);
       scheduleCard.setLayout(scheduleCardLayout);
       scheduleCardLayout.setHorizontalGroup(scheduleCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                              .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, scheduleCardLayout.createSequentialGroup()
-                                                                                                                                      .addContainerGap()
-                                                                                                                                      .addComponent(jScrollPane2))
                                                               .addGroup(scheduleCardLayout.createSequentialGroup()
+                                                                                          .addContainerGap()
+                                                                                          .addComponent(boxClass, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                          .addGap(97, 97, 97)
                                                                                           .addGroup(scheduleCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                                      .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                                                                       .addGroup(scheduleCardLayout.createSequentialGroup()
-                                                                                                                                                  .addGap(234, 234, 234)
-                                                                                                                                                  .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                                                      .addGroup(scheduleCardLayout.createSequentialGroup()
-                                                                                                                                                  .addContainerGap()
+                                                                                                                                                  .addGap(85, 85, 85)
                                                                                                                                                   .addComponent(btnAddSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                                                          .addGap(0, 341, Short.MAX_VALUE)));
+                                                                                          .addGap(0, 344, Short.MAX_VALUE))
+                                                              .addComponent(jScrollPane2));
       scheduleCardLayout.setVerticalGroup(scheduleCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addGroup(scheduleCardLayout.createSequentialGroup()
                                                                                         .addContainerGap()
                                                                                         .addComponent(jLabel17)
-                                                                                        .addGap(53, 53, 53)
-                                                                                        .addComponent(btnAddSchedule)
-                                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)));
+                                                                                        .addGap(59, 59, 59)
+                                                                                        .addGroup(scheduleCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                                                                    .addComponent(btnAddSchedule)
+                                                                                                                    .addComponent(boxClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                        .addContainerGap(42, Short.MAX_VALUE)));
 
       mainPanel.add(scheduleCard, "Schedule Card");
       scheduleCard.getAccessibleContext()
@@ -715,10 +729,15 @@ public class TeacherUI extends JFrame {
       jLabel19.setText("Bảng điểm");
       jLabel19.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-      tableScore.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{{null, null, null, null}, {null, null, null, null}, {null, null, null, null}, {null, null, null, null}}, new String[]{"Title 1", "Title 2", "Title 3", "Title 4"}));
+      tableScore.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{{null, null, null, null, null, null, null, null, null}, {null, null, null, null, null, null, null, null, null}, {null, null, null, null, null, null, null, null, null}, {null, null, null, null, null, null, null, null, null}}, new String[]{"STT", "MSSV", "Họ tên", "Điểm GK", "Điểm CK", "Điểm khác", "Điểm tổng", "Lớp", "Kết quả"}));
       jScrollPane4.setViewportView(tableScore);
 
-      boxClassScore.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
+      boxClassScore.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Tất cả"}));
+      boxClassScore.addItemListener(new java.awt.event.ItemListener() {
+         public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            boxClassScoreItemStateChanged(evt);
+         }
+      });
 
       jLabel23.setText("Đậu");
 
@@ -732,6 +751,20 @@ public class TeacherUI extends JFrame {
       labelFail.setForeground(new java.awt.Color(153, 0, 0));
       labelFail.setText("50%");
 
+      btnAddScore.setText("Thêm bảng điểm");
+      btnAddScore.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            btnAddScoreMouseClicked(evt);
+         }
+      });
+
+      boxResult.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Tẩt cả"}));
+      boxResult.addItemListener(new java.awt.event.ItemListener() {
+         public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            boxResultItemStateChanged(evt);
+         }
+      });
+
       javax.swing.GroupLayout scoreCardLayout = new javax.swing.GroupLayout(scoreCard);
       scoreCard.setLayout(scoreCardLayout);
       scoreCardLayout.setHorizontalGroup(scoreCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -743,14 +776,19 @@ public class TeacherUI extends JFrame {
                                                         .addGroup(scoreCardLayout.createSequentialGroup()
                                                                                  .addContainerGap()
                                                                                  .addComponent(boxClassScore, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                 .addGap(18, 18, 18)
+                                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                 .addComponent(boxResult, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                 .addGap(60, 60, 60)
                                                                                  .addGroup(scoreCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                                                           .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                                                           .addComponent(labelPass, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                                  .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                                                  .addGroup(scoreCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                                                           .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                          .addComponent(labelFail, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                                          .addGroup(scoreCardLayout.createSequentialGroup()
+                                                                                                                                   .addComponent(labelFail, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                                                   .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                                                                                   .addComponent(btnAddScore)))
                                                                                  .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
       scoreCardLayout.setVerticalGroup(scoreCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, scoreCardLayout.createSequentialGroup()
@@ -758,16 +796,19 @@ public class TeacherUI extends JFrame {
                                                                                                                            .addComponent(jLabel19)
                                                                                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                                                                                                                            .addGroup(scoreCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, scoreCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                                                                                                                                                                         .addComponent(boxClassScore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                                                                                                                                         .addComponent(boxResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                                                                                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, scoreCardLayout.createSequentialGroup()
                                                                                                                                                                                                                          .addComponent(jLabel23)
                                                                                                                                                                                                                          .addGap(0, 0, 0)
-                                                                                                                                                                                                                         .addGroup(scoreCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                                                                                                                                                                                  .addComponent(boxClassScore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                                                                                  .addComponent(labelPass, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                                                                                                                                                                         .addComponent(labelPass, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                                                                                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, scoreCardLayout.createSequentialGroup()
                                                                                                                                                                                                                          .addComponent(jLabel25)
                                                                                                                                                                                                                          .addGap(0, 0, 0)
-                                                                                                                                                                                                                         .addComponent(labelFail, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                                                                                                                                                                         .addGroup(scoreCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                                                                                                                                                                                                  .addComponent(labelFail, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                                                                                                                                                                  .addComponent(btnAddScore))))
                                                                                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                                                                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                                                                            .addContainerGap()));
@@ -1058,16 +1099,22 @@ public class TeacherUI extends JFrame {
       }
       session.close();
    }
-   private void showListSubject() {
+   private void showListSubject(String maLop) {
       Session session = HibernateUtils.getSessionFactory()
                                       .openSession();
       session.getTransaction()
              .begin();
       ChiTietLopHocDAOImpl.setSession(session);
       MonHocDAOImpl.setSession(session);
+      LopHocDAOImpl.setSession(session);
       ChiTietLopHocDAO dao = new ChiTietLopHocDAOImpl();
       MonHocDAO monHocDAO = new MonHocDAOImpl();
-      List<ChiTietLopHoc> chiTietLopHocList = dao.getAll();
+      LopHocDAO lopHocDAO = new LopHocDAOImpl();
+      List<ChiTietLopHoc> chiTietLopHocList;
+      if (maLop == null)
+         chiTietLopHocList = dao.getAll();
+      else
+         chiTietLopHocList = dao.getByMaLop(maLop);
       DefaultTableModel tableModel = (DefaultTableModel) tableSchedule.getModel();
       tableModel.setRowCount(chiTietLopHocList.size());
       for (int i = 0; i < chiTietLopHocList.size(); i++) {
@@ -1078,6 +1125,14 @@ public class TeacherUI extends JFrame {
          tableModel.setValueAt(monHoc.getTenMon(), i, 2);
          tableModel.setValueAt(chiTietLopHoc.getPhongHoc(), i, 3);
          tableModel.setValueAt(chiTietLopHoc.getMaLop(), i, 4);
+      }
+      if (boxClass.getItemCount() == 1) {
+         List<LopHoc> lopHocList = lopHocDAO.getAll();
+         List<String> model = new ArrayList<>();
+         model.add("Chọn lớp");
+         for (LopHoc lopHoc : lopHocList)
+            model.add(lopHoc.getMaLop());
+         boxClass.setModel(new DefaultComboBoxModel<>(model.toArray(new String[0])));
       }
       session.close();
    }
@@ -1108,6 +1163,7 @@ public class TeacherUI extends JFrame {
       }
       session.close();
    }
+
    private void setupBoxClass() {
       Session session = HibernateUtils.getSessionFactory()
                                       .openSession();
@@ -1194,7 +1250,7 @@ public class TeacherUI extends JFrame {
       session.getTransaction()
              .commit();
       session.close();
-      showListSubject();
+      showListSubject(null);
    }//GEN-LAST:event_btnAddScheduleMouseClicked
 
    private void btnSavePassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSavePassMouseClicked
@@ -1240,11 +1296,138 @@ public class TeacherUI extends JFrame {
          showListClass((String) boxListClass.getSelectedItem(), (String) boxSubjectClass.getSelectedItem());
    }//GEN-LAST:event_boxSubjectClassItemStateChanged
 
+   private void boxClassItemStateChanged(java.awt.event.ItemEvent evt) {
+      if (boxClass.getSelectedIndex() == 0)
+         showListSubject(null);
+      else
+         showListSubject((String) boxClass.getSelectedItem());
+
+      //GEN-FIRST:event_boxClassItemStateChanged
+      // TODO add your handling code here:
+   }//GEN-LAST:event_boxClassItemStateChanged
+
+   private void boxClassScoreItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_boxClassScoreItemStateChanged
+      // TODO add your handling code here:
+   }//GEN-LAST:event_boxClassScoreItemStateChanged
+
+   private void boxResultItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_boxResultItemStateChanged
+      // TODO add your handling code here:
+   }//GEN-LAST:event_boxResultItemStateChanged
+
+   private void btnAddScoreMouseClicked(java.awt.event.MouseEvent evt) {
+      List<ChiTietMonHoc> chiTietMonHocList = new ArrayList<>();
+      FileDialog dialog = new FileDialog((Dialog) null, "Chọn file bảng điểm");
+      dialog.setMode(FileDialog.LOAD);
+      dialog.setVisible(true);
+      String maLop, maMon, fileName;
+      fileName = dialog.getFile()
+                       .replace(".csv", "-");
+      String[] parts = fileName.split("-");
+      maLop = parts[0];
+      maMon = parts[1];
+      try {
+         BufferedReader reader = new BufferedReader(new FileReader(dialog.getDirectory() + dialog.getFile(), StandardCharsets.UTF_8));
+         reader.readLine();
+         while (reader.ready()) {
+            String line = reader.readLine();
+            ChiTietMonHoc chiTietMonHoc = new ChiTietMonHoc();
+            parts = line.split(",");
+            chiTietMonHoc.setMaLop(maLop);
+            chiTietMonHoc.setMaMon(maMon);
+            chiTietMonHoc.setMssv(parts[0]);
+            chiTietMonHoc.setDiemGk(Double.valueOf(parts[2]));
+            chiTietMonHoc.setDiemCk(Double.valueOf(parts[3]));
+            chiTietMonHoc.setDiemKhac(Double.valueOf(parts[4]));
+            chiTietMonHoc.setDiemTong(Double.valueOf(parts[5]));
+            chiTietMonHocList.add(chiTietMonHoc);
+         }
+         reader.close();
+      } catch (FileNotFoundException e) {
+         System.out.println("File not found!");
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+      Session session = HibernateUtils.getSessionFactory()
+                                      .openSession();
+      session.getTransaction()
+             .begin();
+      ChiTietMonHocDAOImpl.setSession(session);
+      ChiTietMonHocDAO dao = new ChiTietMonHocDAOImpl();
+      dao.importBangDiem(chiTietMonHocList);
+      session.getTransaction()
+             .commit();
+      session.close();
+      setupScoreCard(null, null, 0);
+   }
+   private void setupScoreCard(String maLop, String maMon, int option) {
+      Session session = HibernateUtils.getSessionFactory()
+                                      .openSession();
+      session.getTransaction()
+             .begin();
+
+      if (boxClassScore.getItemCount() == 1) {
+         ChiTietLopHocDAOImpl.setSession(session);
+         ChiTietLopHocDAO chiTietLopHocDAO = new ChiTietLopHocDAOImpl();
+         List<ChiTietLopHoc> chiTietLopHocList = chiTietLopHocDAO.getAll();
+         List<String> model = new ArrayList<>();
+         model.add("Chọn lớp");
+         for (ChiTietLopHoc lopHoc : chiTietLopHocList)
+            model.add(lopHoc.getMaLop() + "-" + lopHoc.getMaMon());
+         boxClassScore.setModel(new DefaultComboBoxModel<>(model.toArray(new String[0])));
+         model.clear();
+         model.add("Tất cả");
+         model.add("Đậu");
+         model.add("Rớt");
+      }
+      ChiTietMonHocDAOImpl.setSession(session);
+      SinhVienDAOImpl.setSession(session);
+      ChiTietMonHocDAO chiTietMonHocDAO = new ChiTietMonHocDAOImpl();
+      SinhVienDAO sinhVienDAO = new SinhVienDAOImpl();
+      List<ChiTietMonHoc> chiTietMonHocList = chiTietMonHocDAO.getByMaLopMaMon(maLop, maMon);
+      DefaultTableModel tableModel = (DefaultTableModel) tableScore.getModel();
+      int cnt = 0;
+      for (ChiTietMonHoc chiTietMonHoc : chiTietMonHocList) {
+         if (option == 1 && chiTietMonHoc.getDiemTong() < 5) {
+            chiTietMonHocList.remove(chiTietMonHoc);
+         } else if (option == -1 && chiTietMonHoc.getDiemTong() >= 5)
+            chiTietMonHocList.remove(chiTietMonHoc);
+      }
+      tableModel.setRowCount(chiTietMonHocList.size());
+      for (int i = 0; i < chiTietMonHocList.size(); i++) {
+         ChiTietMonHoc chiTietMonHoc = chiTietMonHocList.get(i);
+         SinhVien sinhVien = sinhVienDAO.getByMSSV(chiTietMonHoc.getMssv());
+         tableModel.setValueAt(String.valueOf(i + 1), i, 0);
+         tableModel.setValueAt(sinhVien.getMssv(), i, 1);
+         tableModel.setValueAt(sinhVien.getHoVaTen(), i, 2);
+         tableModel.setValueAt(chiTietMonHoc.getMaLop() + "-" + chiTietMonHoc.getMaMon(), i, 7);
+         if (chiTietMonHoc.getDiemTong() != null) {
+            tableModel.setValueAt(chiTietMonHoc.getDiemGk(), i, 3);
+            tableModel.setValueAt(chiTietMonHoc.getDiemCk(), i, 4);
+            tableModel.setValueAt(chiTietMonHoc.getDiemKhac(), i, 5);
+            tableModel.setValueAt(chiTietMonHoc.getDiemTong(), i, 6);
+            if (chiTietMonHoc.getDiemTong() >= 5) {
+               cnt++;
+               tableModel.setValueAt("Đậu", i, 7);
+            } else
+               tableModel.setValueAt("Rớt", i, 7);
+         }
+      }
+      if (chiTietMonHocList.get(0)
+                           .getDiemTong() != null) {
+         cnt = cnt / chiTietMonHocList.size() * 100;
+         labelPass.setText(cnt + "%");
+         labelFail.setText((100 - cnt) + "%");
+      } else {
+         labelPass.setText("%");
+         labelFail.setText("%");
+      }
+      session.close();
+   }
    /**
     * @param args
     *         the command line arguments
     */
-   public static void main(String args[]) {
+   public static void main(String[] args) {
       /* Set the Nimbus look and feel */
       //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
       /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -1284,11 +1467,14 @@ public class TeacherUI extends JFrame {
    // Variables declaration - do not modify//GEN-BEGIN:variables
    private javax.swing.JPanel accountCard;
    private javax.swing.JPanel accountOption;
+   private javax.swing.JComboBox<String> boxClass;
    private javax.swing.JComboBox<String> boxClassAddStudent;
    private javax.swing.JComboBox<String> boxClassScore;
    private javax.swing.JComboBox<String> boxListClass;
+   private javax.swing.JComboBox<String> boxResult;
    private javax.swing.JComboBox<String> boxSubjectClass;
    private javax.swing.JButton btnAddSchedule;
+   private javax.swing.JButton btnAddScore;
    private javax.swing.JButton btnAddStudentFile;
    private javax.swing.JButton btnDeleteStudent;
    private javax.swing.JButton btnLogOut;

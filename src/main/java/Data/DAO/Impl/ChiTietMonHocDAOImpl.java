@@ -61,7 +61,6 @@ public class ChiTietMonHocDAOImpl implements ChiTietMonHocDAO {
    public List<ChiTietMonHoc> getByMaLopMaMon(String maLop, String maMon) {
       if (maLop == null && maMon == null)
          return getAll();
-
       String sql;
       Query query;
       if (maLop != null && maMon != null) {
