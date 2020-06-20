@@ -79,7 +79,7 @@ public class ChiTietMonHocDAOImpl implements ChiTietMonHocDAO {
 
    @Override
    public ChiTietMonHoc getByMaLopMaMonMssv(String maLop, String maMon, String mssv) {
-      String sql = String.format("from %s ctmh where ctmh.MaLop = :maLop and ctmh.MaMon = :maMon and ctmh.Mssv = :mssv", ChiTietMonHoc.class.getName());
+      String sql = String.format("from %s ctmh where ctmh.maLop = :maLop and ctmh.maMon = :maMon and ctmh.mssv = :mssv", ChiTietMonHoc.class.getName());
       Query query = session.createQuery(sql);
       query.setParameter("maLop", maLop);
       query.setParameter("maMon", maMon);

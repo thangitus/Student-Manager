@@ -680,6 +680,11 @@ public class TeacherUI extends JFrame {
       });
 
       btnDeleteStudent.setText("Xóa sinh viên");
+      btnDeleteStudent.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            btnDeleteStudentMouseClicked(evt);
+         }
+      });
 
       javax.swing.GroupLayout classCardLayout = new javax.swing.GroupLayout(classCard);
       classCard.setLayout(classCardLayout);
@@ -1314,6 +1319,28 @@ public class TeacherUI extends JFrame {
       // TODO add your handling code here:
    }//GEN-LAST:event_boxResultItemStateChanged
 
+   private void btnDeleteStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteStudentMouseClicked
+      // TODO add your handling code here:
+      int select = tableClass.getSelectedRow();
+      Session session = HibernateUtils.getSessionFactory()
+                                      .openSession();
+      session.getTransaction()
+             .begin();
+      ChiTietMonHocDAOImpl.setSession(session);
+      ChiTietMonHocDAO chiTietMonHocDAO = new ChiTietMonHocDAOImpl();
+      String maLop, maMon, mssv;
+      mssv = (String) tableClass.getValueAt(select, 1);
+      maLop = (String) tableClass.getValueAt(select, 3);
+      maMon = (String) tableClass.getValueAt(select, 5);
+      ChiTietMonHoc chiTietMonHoc = chiTietMonHocDAO.getByMaLopMaMonMssv(maLop, maMon, mssv);
+      chiTietMonHocDAO.delete(chiTietMonHoc);
+      session.getTransaction()
+             .commit();
+      session.close();
+      DefaultTableModel model = (DefaultTableModel) tableClass.getModel();
+      model.removeRow(select);
+   }//GEN-LAST:event_btnDeleteStudentMouseClicked
+
    private void btnAddScoreMouseClicked(java.awt.event.MouseEvent evt) {
       List<ChiTietMonHoc> chiTietMonHocList = new ArrayList<>();
       FileDialog dialog = new FileDialog((Dialog) null, "Chọn file bảng điểm");
@@ -1378,6 +1405,7 @@ public class TeacherUI extends JFrame {
          model.add("Tất cả");
          model.add("Đậu");
          model.add("Rớt");
+         boxResult.setModel(new DefaultComboBoxModel<>(model.toArray(new String[0])));
       }
       ChiTietMonHocDAOImpl.setSession(session);
       SinhVienDAOImpl.setSession(session);
