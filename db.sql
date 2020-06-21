@@ -28,10 +28,10 @@ CREATE TABLE `hibernateexercise`.`lop_hoc` (
   `MaMon` VARCHAR(10) NOT NULL,
   `MSSV` VARCHAR(8) NOT NULL,
   `TenMonHoc` VARCHAR(20),
-   `DiemGK` FLOAT(2,1),
-  `DiemCK` FLOAT(2,1),
-  `DiemKhac` FLOAT(2,1),
-  `DiemTong` FLOAT(2,1),
+   `DiemGK` FLOAT(3,1),
+  `DiemCK` FLOAT(3,1),
+  `DiemKhac` FLOAT(3,1),
+  `DiemTong` FLOAT(3,1),
   PRIMARY KEY (`MaLop`,`MaMon`,`MSSV`));
   
     CREATE TABLE `hibernateexercise`.`tai_khoan` (
@@ -85,13 +85,7 @@ ADD CONSTRAINT FK_MSSV_CTMH_SV
   FOREIGN KEY (MSSV)
   REFERENCES `hibernateexercise`.`sinh_vien` (MSSV);
 
--- Khoa ngoai cho Tai khoan
 
-  ALTER TABLE `hibernateexercise`.`tai_khoan` 
-ADD CONSTRAINT FK_MSSV_TK_SV
-  FOREIGN KEY (TaiKhoan)
-  REFERENCES `hibernateexercise`.`sinh_vien` (MSSV);
-  
 -- Khoa ngoai cho Phuc khao
 
 ALTER TABLE `hibernateexercise`.`phuc_khao` 
@@ -103,4 +97,6 @@ ADD CONSTRAINT FK_MSSV_PK_SV
 ADD CONSTRAINT FK_MaMon_PK_SV
   FOREIGN KEY (MaMon)
   REFERENCES `hibernateexercise`.`mon_hoc` (MaMon);
+
+  INSERT INTO `hibernateexercise`.`tai_khoan` (`TaiKhoan`, `MatKhau`) VALUES ('giaovu', 'giaovu');
   

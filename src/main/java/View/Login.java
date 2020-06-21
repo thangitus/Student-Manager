@@ -11,6 +11,7 @@ import Data.HibernateUtils;
 import Data.entities.TaiKhoan;
 import org.hibernate.Session;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -24,7 +25,7 @@ public class Login extends javax.swing.JFrame {
    public Login() {
       initComponents();
       session = HibernateUtils.getSessionFactory()
-                                      .openSession();
+                              .openSession();
       session.getTransaction()
              .begin();
       TaiKhoanDAOImpl.setSession(session);
@@ -131,58 +132,30 @@ public class Login extends javax.swing.JFrame {
       String userName, pass;
       userName = this.userName.getText();
       pass = password.getText();
-      TaiKhoanDAO taiKhoanDAO=new TaiKhoanDAOImpl();
-      TaiKhoan taiKhoan=taiKhoanDAO.getByTaiKhoan(userName);
-      if(taiKhoan!=null&&taiKhoan.getTaiKhoan().equalsIgnoreCase("giaovu")&&taiKhoan.getMatKhau().equals(pass)){
-         EventQueue.invokeLater(new Runnable() {
-            public void run() {
-               new TeacherUI().setVisible(true);
-            }
-         });
-         this.setVisible(false);
-      }
+      TaiKhoanDAO taiKhoanDAO = new TaiKhoanDAOImpl();
+      TaiKhoan taiKhoan = taiKhoanDAO.getByTaiKhoan(userName);
+      if (taiKhoan != null && taiKhoan.getMatKhau()
+                                      .equals(pass)) {
+         if (taiKhoan.getTaiKhoan()
+                     .equalsIgnoreCase("giaovu"))
+            EventQueue.invokeLater(new Runnable() {
+               public void run() {
+                  new TeacherUI().setVisible(true);
+               }
+            });
+         else
+            EventQueue.invokeLater(new Runnable() {
+               public void run() {
+                  new StudentUI(taiKhoan).setVisible(true);
+               }
+            });
+         this.dispose();
+      } else
+         Toast.makeText(this, "Tài khoản hoặc mật khẩu không đúng", Toast.Style.ERROR)
+              .display();
    }//GEN-LAST:event_logInMouseClicked
 
-   /**
-    * @param args
-    *         the command line arguments
-    */
-   public static void main(String args[]) {
-      /* Set the Nimbus look and feel */
-      //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-      /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-       * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-       */
-      try {
-         for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-            if ("Nimbus".equals(info.getName())) {
-               javax.swing.UIManager.setLookAndFeel(info.getClassName());
-               break;
-            }
-         }
-      } catch (ClassNotFoundException ex) {
-         java.util.logging.Logger.getLogger(Login.class.getName())
-                                 .log(java.util.logging.Level.SEVERE, null, ex);
-      } catch (InstantiationException ex) {
-         java.util.logging.Logger.getLogger(Login.class.getName())
-                                 .log(java.util.logging.Level.SEVERE, null, ex);
-      } catch (IllegalAccessException ex) {
-         java.util.logging.Logger.getLogger(Login.class.getName())
-                                 .log(java.util.logging.Level.SEVERE, null, ex);
-      } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-         java.util.logging.Logger.getLogger(Login.class.getName())
-                                 .log(java.util.logging.Level.SEVERE, null, ex);
-      }
-      //</editor-fold>
-
-      /* Create and display the form */
-      java.awt.EventQueue.invokeLater(new Runnable() {
-         public void run() {
-            new Login().setVisible(true);
-         }
-      });
-   }
-private Session session;
+   private Session session;
    // Variables declaration - do not modify//GEN-BEGIN:variables
    private javax.swing.JLabel jLabel1;
    private javax.swing.JLabel jLabel2;

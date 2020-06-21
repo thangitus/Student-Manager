@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -39,7 +40,7 @@ public class TeacherUI extends JFrame {
    public TeacherUI() {
       initComponents();
       addOptionToList();
-      changeOption(3);
+      changeOption(0);
    }
    private void addOptionToList() {
       listOption = new ArrayList<>();
@@ -91,6 +92,7 @@ public class TeacherUI extends JFrame {
             cardLayout.show(mainPanel, "Score Card");
             break;
          case 4:
+            setupComplainCard();
             cardLayout.show(mainPanel, "Complain Card");
             break;
          case 5:
@@ -175,22 +177,11 @@ public class TeacherUI extends JFrame {
       jLabel22 = new javax.swing.JLabel();
       jScrollPane5 = new javax.swing.JScrollPane();
       tableComplain = new javax.swing.JTable();
-      jLabel9 = new javax.swing.JLabel();
-      textFieldStart = new javax.swing.JTextField();
-      textFieldEnd = new javax.swing.JTextField();
-      jLabel16 = new javax.swing.JLabel();
-      btnSaveComplain = new javax.swing.JButton();
       jSeparator1 = new javax.swing.JSeparator();
       jLabel27 = new javax.swing.JLabel();
-      textFieldDiemGk = new javax.swing.JTextField();
-      jLabel28 = new javax.swing.JLabel();
-      textFieldDiemCK = new javax.swing.JTextField();
-      jLabel29 = new javax.swing.JLabel();
-      textFieldDiemKhac = new javax.swing.JTextField();
-      jLabel30 = new javax.swing.JLabel();
-      textFieldDiemTong = new javax.swing.JTextField();
-      jLabel31 = new javax.swing.JLabel();
+      textFieldDiemPK = new javax.swing.JTextField();
       btnUpdateScore = new javax.swing.JButton();
+      boxStatus = new javax.swing.JComboBox<>();
       accountCard = new javax.swing.JPanel();
       jLabel32 = new javax.swing.JLabel();
       jLabel40 = new javax.swing.JLabel();
@@ -764,7 +755,7 @@ public class TeacherUI extends JFrame {
          }
       });
 
-      boxResult.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Tẩt cả"}));
+      boxResult.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Tất cả", "Đậu", "Rớt"}));
       boxResult.addItemListener(new java.awt.event.ItemListener() {
          public void itemStateChanged(java.awt.event.ItemEvent evt) {
             boxResultItemStateChanged(evt);
@@ -827,29 +818,19 @@ public class TeacherUI extends JFrame {
       jLabel22.setText("Phúc khảo");
       jLabel22.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-      tableComplain.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{{null, null, null, null}, {null, null, null, null}, {null, null, null, null}, {null, null, null, null}}, new String[]{"Title 1", "Title 2", "Title 3", "Title 4"}));
+      tableComplain.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{{null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}, {null, null, null, null, null, null}}, new String[]{"STT", "MSSV", "Mã môn", "Cột điểm", "Điểm mong muốn", "Lí do"}));
       jScrollPane5.setViewportView(tableComplain);
 
-      jLabel9.setText("Bắt đầu");
-
-      jLabel16.setText("Kết thúc");
-
-      btnSaveComplain.setText("Lưu lịch phúc khảo");
-
-      jLabel27.setText("Điểm GK");
-
-      jLabel28.setText("Điểm CK");
-
-      jLabel29.setText("Điểm Khác");
-
-      jLabel30.setText("Điểm tổng");
-
-      jLabel31.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-      jLabel31.setForeground(new java.awt.Color(153, 153, 255));
-      jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-      jLabel31.setText("Cập nhật điểm");
+      jLabel27.setText("Cập nhật điểm");
 
       btnUpdateScore.setText("Lưu lại");
+      btnUpdateScore.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            btnUpdateScoreMouseClicked(evt);
+         }
+      });
+
+      boxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Cập nhật", "Không cập nhật", "Chưa xem"}));
 
       javax.swing.GroupLayout complainCardLayout = new javax.swing.GroupLayout(complainCard);
       complainCard.setLayout(complainCardLayout);
@@ -858,73 +839,37 @@ public class TeacherUI extends JFrame {
                                                                                           .addContainerGap()
                                                                                           .addGroup(complainCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                                                                       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, complainCardLayout.createSequentialGroup()
-                                                                                                                                                                                              .addGap(0, 0, Short.MAX_VALUE)
                                                                                                                                                                                               .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                                                                                                                                               .addGap(281, 281, 281))
                                                                                                                       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, complainCardLayout.createSequentialGroup()
                                                                                                                                                                                               .addGroup(complainCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                                                                                                                                                                           .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                                                                                                                                                                                                                           .addGroup(complainCardLayout.createSequentialGroup()
-                                                                                                                                                                                                                                                      .addGroup(complainCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                                                                                                                                                                                                  .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                                                                                                                  .addComponent(textFieldStart, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                                                                                                                  .addComponent(textFieldEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                                                                                                                  .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                                                                                                                  .addComponent(btnSaveComplain, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                                                                                                                  .addComponent(textFieldDiemGk, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                                                                                                                  .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                                                                                                                  .addComponent(textFieldDiemCK, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                                                                                                                  .addComponent(textFieldDiemKhac, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                                                                                                                  .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                                                                                                                  .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                                                                                                                  .addComponent(textFieldDiemTong, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                                                                                                                  .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                                                                                                                  .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                                                                                                                  .addComponent(btnUpdateScore, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                                                                                                                                                                                      .addGap(0, 15, Short.MAX_VALUE)))
-                                                                                                                                                                                              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                                                                                                                                                                                                      .addGroup(complainCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                                                                                                                                                                                                                                  .addComponent(textFieldDiemPK, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                                                                                                                                                                                                                                                                                  .addComponent(btnUpdateScore, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                                                                                                                                                                                                  .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                                                                                                                                                                                                  .addComponent(boxStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                                                                                                                                                                                                                      .addGap(0, 9, Short.MAX_VALUE)))
+                                                                                                                                                                                              .addGap(18, 18, 18)
                                                                                                                                                                                               .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                                                                                                                                               .addContainerGap()))));
       complainCardLayout.setVerticalGroup(complainCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, complainCardLayout.createSequentialGroup()
                                                                                                                                     .addContainerGap()
                                                                                                                                     .addComponent(jLabel22)
+                                                                                                                                    .addGap(18, 18, 18)
                                                                                                                                     .addGroup(complainCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                                                                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                                                                                                                 .addGroup(complainCardLayout.createSequentialGroup()
-                                                                                                                                                                                            .addGap(18, 18, 18)
-                                                                                                                                                                                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                                                                                                .addGroup(complainCardLayout.createSequentialGroup()
-                                                                                                                                                                                            .addGap(53, 53, 53)
-                                                                                                                                                                                            .addComponent(jLabel9)
-                                                                                                                                                                                            .addGap(0, 0, 0)
-                                                                                                                                                                                            .addComponent(textFieldStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                            .addGap(18, 18, 18)
-                                                                                                                                                                                            .addComponent(jLabel16)
-                                                                                                                                                                                            .addGap(0, 0, 0)
-                                                                                                                                                                                            .addComponent(textFieldEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                            .addGap(18, 18, 18)
-                                                                                                                                                                                            .addComponent(btnSaveComplain)
-                                                                                                                                                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                                                                                                                                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                                                                                                                            .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                            .addGap(18, 18, 18)
+                                                                                                                                                                                            .addGap(62, 62, 62)
                                                                                                                                                                                             .addComponent(jLabel27)
                                                                                                                                                                                             .addGap(0, 0, 0)
-                                                                                                                                                                                            .addComponent(textFieldDiemGk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                            .addGap(18, 18, 18)
-                                                                                                                                                                                            .addComponent(jLabel28)
-                                                                                                                                                                                            .addGap(0, 0, 0)
-                                                                                                                                                                                            .addComponent(textFieldDiemCK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                            .addGap(18, 18, 18)
-                                                                                                                                                                                            .addComponent(jLabel29)
-                                                                                                                                                                                            .addGap(0, 0, 0)
-                                                                                                                                                                                            .addComponent(textFieldDiemKhac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                            .addGap(18, 18, 18)
-                                                                                                                                                                                            .addComponent(jLabel30)
-                                                                                                                                                                                            .addGap(0, 0, 0)
-                                                                                                                                                                                            .addComponent(textFieldDiemTong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                                                                                            .addGap(18, 18, 18)
+                                                                                                                                                                                            .addComponent(textFieldDiemPK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                                                                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                                                                                                                            .addComponent(boxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                                                                                                            .addGap(25, 25, 25)
                                                                                                                                                                                             .addComponent(btnUpdateScore)))
                                                                                                                                     .addContainerGap(16, Short.MAX_VALUE)));
 
@@ -955,6 +900,11 @@ public class TeacherUI extends JFrame {
       });
 
       btnLogOut.setText("Đăng xuất");
+      btnLogOut.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            btnLogOutMouseClicked(evt);
+         }
+      });
 
       javax.swing.GroupLayout accountCardLayout = new javax.swing.GroupLayout(accountCard);
       accountCard.setLayout(accountCardLayout);
@@ -1103,6 +1053,13 @@ public class TeacherUI extends JFrame {
          tableModel.setValueAt(sinhVien.getCmnd(), i, 4);
          tableModel.setValueAt(sinhVien.getMaLop(), i, 5);
       }
+      LopHocDAOImpl.setSession(session);
+      LopHocDAO lopHocDAO = new LopHocDAOImpl();
+      List<LopHoc> lopHocList = lopHocDAO.getAll();
+      List<String> model = new ArrayList<>();
+      for (LopHoc lopHoc : lopHocList)
+         model.add(lopHoc.getMaLop());
+      boxClassAddStudent.setModel(new DefaultComboBoxModel<>(model.toArray(new String[0])));
       session.close();
    }
    private void showListSubject(String maLop) {
@@ -1265,6 +1222,20 @@ public class TeacherUI extends JFrame {
       pass1 = String.valueOf(jPasswordField1.getPassword());
       pass2 = String.valueOf(jPasswordField2.getPassword());
       if (pass1.equals(pass2)) {
+         Session session = HibernateUtils.getSessionFactory()
+                                         .openSession();
+         session.getTransaction()
+                .begin();
+         TaiKhoanDAOImpl.setSession(session);
+         TaiKhoanDAO taiKhoanDAO = new TaiKhoanDAOImpl();
+         TaiKhoan taiKhoan = taiKhoanDAO.getByTaiKhoan("giaovu");
+         taiKhoanDAO.updateMatKhau(taiKhoan, pass1);
+         session.getTransaction()
+                .commit();
+         session.close();
+         Toast.makeText(this, "Cập nhật mật khẩu thành công", Toast.Style.SUCCESS)
+              .display();
+
       } else
          Toast.makeText(this, "Mật khẩu không trùng khớp", Toast.Style.SUCCESS)
               .display();
@@ -1313,11 +1284,23 @@ public class TeacherUI extends JFrame {
    }//GEN-LAST:event_boxClassItemStateChanged
 
    private void boxClassScoreItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_boxClassScoreItemStateChanged
-      // TODO add your handling code here:
+      if (boxClassScore.getSelectedIndex() == 0) {
+         setupScoreCard(null, null, boxResult.getSelectedIndex());
+         return;
+      }
+      String select = (String) boxClassScore.getSelectedItem();
+      String[] part = select.split("-");
+      setupScoreCard(part[0], part[1], boxResult.getSelectedIndex());
    }//GEN-LAST:event_boxClassScoreItemStateChanged
 
    private void boxResultItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_boxResultItemStateChanged
-      // TODO add your handling code here:
+      if (boxClassScore.getSelectedIndex() == 0) {
+         setupScoreCard(null, null, boxResult.getSelectedIndex());
+         return;
+      }
+      String select = (String) boxClassScore.getSelectedItem();
+      String[] part = select.split("-");
+      setupScoreCard(part[0], part[1], boxResult.getSelectedIndex());
    }//GEN-LAST:event_boxResultItemStateChanged
 
    private void btnDeleteStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteStudentMouseClicked
@@ -1341,6 +1324,53 @@ public class TeacherUI extends JFrame {
       DefaultTableModel model = (DefaultTableModel) tableClass.getModel();
       model.removeRow(select);
    }//GEN-LAST:event_btnDeleteStudentMouseClicked
+
+   private void btnLogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogOutMouseClicked
+      // TODO add your handling code here:
+      EventQueue.invokeLater(new Runnable() {
+         public void run() {
+            new Login().setVisible(true);
+         }
+      });
+      this.dispose();
+   }//GEN-LAST:event_btnLogOutMouseClicked
+
+   private void btnUpdateScoreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateScoreMouseClicked
+      int row = tableComplain.getSelectedRow();
+      Session session = HibernateUtils.getSessionFactory()
+                                      .openSession();
+      session.getTransaction()
+             .begin();
+      if (boxStatus.getSelectedIndex() == 0) {
+         ChiTietMonHocDAOImpl.setSession(session);
+         SinhVienDAOImpl.setSession(session);
+         ChiTietMonHocDAO chiTietMonHocDAO = new ChiTietMonHocDAOImpl();
+         SinhVienDAO sinhVienDAO = new SinhVienDAOImpl();
+         SinhVien sinhVien = sinhVienDAO.getByMSSV((String) tableComplain.getValueAt(row, 1));
+         ChiTietMonHoc chiTietMonHoc = chiTietMonHocDAO.getByMaLopMaMonMssv(sinhVien.getMaLop(), (String) tableComplain.getValueAt(row, 2), sinhVien.getMssv());
+         String cotDiem = (String) tableComplain.getValueAt(row, 3);
+         double diemPk = Double.parseDouble(textFieldDiemPK.getText());
+         if (cotDiem.equalsIgnoreCase("Giữa kì"))
+            chiTietMonHoc.setDiemGk(diemPk);
+         if (cotDiem.equalsIgnoreCase("Cuối kì"))
+            chiTietMonHoc.setDiemCk(diemPk);
+         if (cotDiem.equalsIgnoreCase("Điểm khác"))
+            chiTietMonHoc.setDiemKhac(diemPk);
+         if (cotDiem.equalsIgnoreCase("Điểm tổng"))
+            chiTietMonHoc.setDiemTong(diemPk);
+      }
+      if (boxStatus.getSelectedIndex() == 1 || boxStatus.getSelectedIndex() == 0) {
+         DefaultTableModel model = (DefaultTableModel) tableComplain.getModel();
+         model.removeRow(row);
+         PhucKhaoDAOImpl.setSession(session);
+         PhucKhaoDAO phucKhaoDAO = new PhucKhaoDAOImpl();
+         phucKhaoDAO.delete(phucKhaoList.get(row));
+         phucKhaoList.remove(row);
+      }
+      session.getTransaction()
+             .commit();
+      session.close();
+   }//GEN-LAST:event_btnUpdateScoreMouseClicked
 
    private void btnAddScoreMouseClicked(java.awt.event.MouseEvent evt) {
       List<ChiTietMonHoc> chiTietMonHocList = new ArrayList<>();
@@ -1402,25 +1432,35 @@ public class TeacherUI extends JFrame {
          for (ChiTietLopHoc lopHoc : chiTietLopHocList)
             model.add(lopHoc.getMaLop() + "-" + lopHoc.getMaMon());
          boxClassScore.setModel(new DefaultComboBoxModel<>(model.toArray(new String[0])));
-         model.clear();
-         model.add("Tất cả");
-         model.add("Đậu");
-         model.add("Rớt");
-         boxResult.setModel(new DefaultComboBoxModel<>(model.toArray(new String[0])));
       }
       ChiTietMonHocDAOImpl.setSession(session);
       SinhVienDAOImpl.setSession(session);
       ChiTietMonHocDAO chiTietMonHocDAO = new ChiTietMonHocDAOImpl();
       SinhVienDAO sinhVienDAO = new SinhVienDAOImpl();
       List<ChiTietMonHoc> chiTietMonHocList = chiTietMonHocDAO.getByMaLopMaMon(maLop, maMon);
+      Iterator<ChiTietMonHoc> iterator = chiTietMonHocList.iterator();
+      if (option == 1) {
+         while (iterator.hasNext()) {
+            ChiTietMonHoc chiTietMonHoc = iterator.next();
+            if (chiTietMonHoc.getDiemTong() != null) {
+               if (chiTietMonHoc.getDiemTong() < 5)
+                  iterator.remove();
+            } else
+               iterator.remove();
+         }
+      } else if (option == 2)
+         while (iterator.hasNext()) {
+            ChiTietMonHoc chiTietMonHoc = iterator.next();
+            if (chiTietMonHoc.getDiemTong() != null) {
+               if (chiTietMonHoc.getDiemTong() >= 5)
+                  iterator.remove();
+            } else
+               iterator.remove();
+         }
+
       DefaultTableModel tableModel = (DefaultTableModel) tableScore.getModel();
-      int cnt = 0;
-      for (ChiTietMonHoc chiTietMonHoc : chiTietMonHocList) {
-         if (option == 1 && chiTietMonHoc.getDiemTong() < 5) {
-            chiTietMonHocList.remove(chiTietMonHoc);
-         } else if (option == -1 && chiTietMonHoc.getDiemTong() >= 5)
-            chiTietMonHocList.remove(chiTietMonHoc);
-      }
+      float cnt = 0;
+      int size = 0;
       tableModel.setRowCount(chiTietMonHocList.size());
       for (int i = 0; i < chiTietMonHocList.size(); i++) {
          ChiTietMonHoc chiTietMonHoc = chiTietMonHocList.get(i);
@@ -1430,25 +1470,50 @@ public class TeacherUI extends JFrame {
          tableModel.setValueAt(sinhVien.getHoVaTen(), i, 2);
          tableModel.setValueAt(chiTietMonHoc.getMaLop() + "-" + chiTietMonHoc.getMaMon(), i, 7);
          if (chiTietMonHoc.getDiemTong() != null) {
+            size++;
             tableModel.setValueAt(chiTietMonHoc.getDiemGk(), i, 3);
             tableModel.setValueAt(chiTietMonHoc.getDiemCk(), i, 4);
             tableModel.setValueAt(chiTietMonHoc.getDiemKhac(), i, 5);
             tableModel.setValueAt(chiTietMonHoc.getDiemTong(), i, 6);
             if (chiTietMonHoc.getDiemTong() >= 5) {
                cnt++;
-               tableModel.setValueAt("Đậu", i, 7);
+               tableModel.setValueAt("Đậu", i, 8);
             } else
-               tableModel.setValueAt("Rớt", i, 7);
+               tableModel.setValueAt("Rớt", i, 8);
          }
       }
+      if (chiTietMonHocList.size() == 0)
+         return;
       if (chiTietMonHocList.get(0)
                            .getDiemTong() != null) {
-         cnt = cnt / chiTietMonHocList.size() * 100;
-         labelPass.setText(cnt + "%");
-         labelFail.setText((100 - cnt) + "%");
+         cnt = cnt / size * 100;
+         labelPass.setText((int) cnt + "%");
+         labelFail.setText((100 - (int) cnt) + "%");
       } else {
          labelPass.setText("%");
          labelFail.setText("%");
+      }
+      session.close();
+   }
+
+   private void setupComplainCard() {
+      Session session = HibernateUtils.getSessionFactory()
+                                      .openSession();
+      session.getTransaction()
+             .begin();
+      PhucKhaoDAOImpl.setSession(session);
+      PhucKhaoDAO phucKhaoDAO = new PhucKhaoDAOImpl();
+      phucKhaoList = phucKhaoDAO.getAll();
+      DefaultTableModel tableModel = (DefaultTableModel) tableComplain.getModel();
+      tableModel.setRowCount(phucKhaoList.size());
+      for (int i = 0; i < phucKhaoList.size(); i++) {
+         PhucKhao phucKhao = phucKhaoList.get(i);
+         tableComplain.setValueAt(i + "", i, 0);
+         tableModel.setValueAt(phucKhao.getMssv(), i, 1);
+         tableModel.setValueAt(phucKhao.getMaMon(), i, 2);
+         tableModel.setValueAt(phucKhao.getCotDiem(), i, 3);
+         tableModel.setValueAt(phucKhao.getDiemMongMuon(), i, 4);
+         tableModel.setValueAt(phucKhao.getLiDo(), i, 5);
       }
       session.close();
    }
@@ -1456,43 +1521,10 @@ public class TeacherUI extends JFrame {
     * @param args
     *         the command line arguments
     */
-   public static void main(String[] args) {
-      /* Set the Nimbus look and feel */
-      //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-      /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-       * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-       */
-      try {
-         for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-            if ("Nimbus".equals(info.getName())) {
-               UIManager.setLookAndFeel(info.getClassName());
-               break;
-            }
-         }
-      } catch (ClassNotFoundException ex) {
-         java.util.logging.Logger.getLogger(TeacherUI.class.getName())
-                                 .log(java.util.logging.Level.SEVERE, null, ex);
-      } catch (InstantiationException ex) {
-         java.util.logging.Logger.getLogger(TeacherUI.class.getName())
-                                 .log(java.util.logging.Level.SEVERE, null, ex);
-      } catch (IllegalAccessException ex) {
-         java.util.logging.Logger.getLogger(TeacherUI.class.getName())
-                                 .log(java.util.logging.Level.SEVERE, null, ex);
-      } catch (UnsupportedLookAndFeelException ex) {
-         java.util.logging.Logger.getLogger(TeacherUI.class.getName())
-                                 .log(java.util.logging.Level.SEVERE, null, ex);
-      }
-      //</editor-fold>
 
-      /* Create and display the form */
-      EventQueue.invokeLater(new Runnable() {
-         public void run() {
-            new TeacherUI().setVisible(true);
-         }
-      });
-   }
 
    private List<JPanel> listOption;
+   private List<PhucKhao> phucKhaoList;
    // Variables declaration - do not modify//GEN-BEGIN:variables
    private javax.swing.JPanel accountCard;
    private javax.swing.JPanel accountOption;
@@ -1501,6 +1533,7 @@ public class TeacherUI extends JFrame {
    private javax.swing.JComboBox<String> boxClassScore;
    private javax.swing.JComboBox<String> boxListClass;
    private javax.swing.JComboBox<String> boxResult;
+   private javax.swing.JComboBox<String> boxStatus;
    private javax.swing.JComboBox<String> boxSubjectClass;
    private javax.swing.JButton btnAddSchedule;
    private javax.swing.JButton btnAddScore;
@@ -1508,7 +1541,6 @@ public class TeacherUI extends JFrame {
    private javax.swing.JButton btnDeleteStudent;
    private javax.swing.JButton btnLogOut;
    private javax.swing.JButton btnSaveAddStudent;
-   private javax.swing.JButton btnSaveComplain;
    private javax.swing.JButton btnSavePass;
    private javax.swing.JButton btnUpdateScore;
    private javax.swing.ButtonGroup buttonGroupSex;
@@ -1523,7 +1555,6 @@ public class TeacherUI extends JFrame {
    private javax.swing.JLabel jLabel13;
    private javax.swing.JLabel jLabel14;
    private javax.swing.JLabel jLabel15;
-   private javax.swing.JLabel jLabel16;
    private javax.swing.JLabel jLabel17;
    private javax.swing.JLabel jLabel18;
    private javax.swing.JLabel jLabel19;
@@ -1532,11 +1563,7 @@ public class TeacherUI extends JFrame {
    private javax.swing.JLabel jLabel23;
    private javax.swing.JLabel jLabel25;
    private javax.swing.JLabel jLabel27;
-   private javax.swing.JLabel jLabel28;
-   private javax.swing.JLabel jLabel29;
    private javax.swing.JLabel jLabel3;
-   private javax.swing.JLabel jLabel30;
-   private javax.swing.JLabel jLabel31;
    private javax.swing.JLabel jLabel32;
    private javax.swing.JLabel jLabel4;
    private javax.swing.JLabel jLabel40;
@@ -1546,7 +1573,6 @@ public class TeacherUI extends JFrame {
    private javax.swing.JLabel jLabel6;
    private javax.swing.JLabel jLabel7;
    private javax.swing.JLabel jLabel8;
-   private javax.swing.JLabel jLabel9;
    private javax.swing.JPasswordField jPasswordField1;
    private javax.swing.JPasswordField jPasswordField2;
    private javax.swing.JScrollPane jScrollPane1;
@@ -1578,13 +1604,8 @@ public class TeacherUI extends JFrame {
    private javax.swing.JTable tableSchedule;
    private javax.swing.JTable tableScore;
    private javax.swing.JTextField textFieldCMND;
-   private javax.swing.JTextField textFieldDiemCK;
-   private javax.swing.JTextField textFieldDiemGk;
-   private javax.swing.JTextField textFieldDiemKhac;
-   private javax.swing.JTextField textFieldDiemTong;
-   private javax.swing.JTextField textFieldEnd;
+   private javax.swing.JTextField textFieldDiemPK;
    private javax.swing.JTextField textFieldMSSV;
    private javax.swing.JTextField textFieldName;
-   private javax.swing.JTextField textFieldStart;
    // End of variables declaration//GEN-END:variables
 }

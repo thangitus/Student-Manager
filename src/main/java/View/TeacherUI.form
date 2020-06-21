@@ -1333,8 +1333,10 @@
             <Component class="javax.swing.JComboBox" name="boxResult">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="1">
-                    <StringItem index="0" value="T&#x1ea9;t c&#x1ea3;"/>
+                  <StringArray count="3">
+                    <StringItem index="0" value="T&#x1ea5;t c&#x1ea3;"/>
+                    <StringItem index="1" value="&#x110;&#x1ead;u"/>
+                    <StringItem index="2" value="R&#x1edb;t"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -1366,7 +1368,6 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="jLabel22" min="-2" pref="347" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="281" max="-2" attributes="0"/>
                           </Group>
@@ -1374,27 +1375,16 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jSeparator1" alignment="1" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel9" min="-2" pref="54" max="-2" attributes="0"/>
-                                          <Component id="textFieldStart" min="-2" pref="210" max="-2" attributes="0"/>
-                                          <Component id="textFieldEnd" min="-2" pref="210" max="-2" attributes="0"/>
-                                          <Component id="jLabel16" min="-2" pref="54" max="-2" attributes="0"/>
-                                          <Component id="btnSaveComplain" alignment="0" min="-2" pref="185" max="-2" attributes="0"/>
-                                          <Component id="textFieldDiemGk" min="-2" pref="210" max="-2" attributes="0"/>
-                                          <Component id="jLabel28" min="-2" pref="54" max="-2" attributes="0"/>
-                                          <Component id="textFieldDiemCK" min="-2" pref="210" max="-2" attributes="0"/>
-                                          <Component id="textFieldDiemKhac" min="-2" pref="210" max="-2" attributes="0"/>
-                                          <Component id="jLabel29" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
-                                          <Component id="jLabel30" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
-                                          <Component id="textFieldDiemTong" min="-2" pref="210" max="-2" attributes="0"/>
-                                          <Component id="jLabel27" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
-                                          <Component id="jLabel31" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="textFieldDiemPK" pref="210" max="32767" attributes="0"/>
                                           <Component id="btnUpdateScore" alignment="0" min="-2" pref="175" max="-2" attributes="0"/>
+                                          <Component id="jLabel27" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="boxStatus" alignment="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jScrollPane5" min="-2" pref="673" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -1407,43 +1397,18 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane5" min="-2" pref="606" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jScrollPane5" min="-2" pref="606" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="textFieldStart" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="textFieldEnd" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnSaveComplain" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel31" min="-2" pref="38" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                               <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="textFieldDiemGk" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="textFieldDiemCK" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="textFieldDiemKhac" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="textFieldDiemTong" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="textFieldDiemPK" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="boxStatus" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                               <Component id="btnUpdateScore" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1478,82 +1443,86 @@
                 <Component class="javax.swing.JTable" name="tableComplain">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
-                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      <Table columnCount="6" rowCount="4">
+                        <Column editable="true" title="STT" type="java.lang.Object"/>
+                        <Column editable="true" title="MSSV" type="java.lang.Object"/>
+                        <Column editable="true" title="M&#xe3; m&#xf4;n" type="java.lang.Object"/>
+                        <Column editable="true" title="C&#x1ed9;t &#x111;i&#x1ec3;m" type="java.lang.Object"/>
+                        <Column editable="true" title="&#x110;i&#x1ec3;m mong mu&#x1ed1;n" type="java.lang.Object"/>
+                        <Column editable="true" title="L&#xed; do" type="java.lang.Object"/>
                       </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="jLabel9">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="B&#x1eaf;t &#x111;&#x1ea7;u"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="textFieldStart">
-            </Component>
-            <Component class="javax.swing.JTextField" name="textFieldEnd">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel16">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="K&#x1ebf;t th&#xfa;c"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnSaveComplain">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="L&#x1b0;u l&#x1ecb;ch ph&#xfa;c kh&#x1ea3;o"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator1">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel27">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x110;i&#x1ec3;m GK"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="textFieldDiemGk">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel28">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#x110;i&#x1ec3;m CK"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="textFieldDiemCK">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel29">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#x110;i&#x1ec3;m Kh&#xe1;c"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="textFieldDiemKhac">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel30">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#x110;i&#x1ec3;m t&#x1ed5;ng"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="textFieldDiemTong">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel31">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="14" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="C&#x1ead;p nh&#x1ead;t &#x111;i&#x1ec3;m"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="textFieldDiemPK">
             </Component>
             <Component class="javax.swing.JButton" name="btnUpdateScore">
               <Properties>
                 <Property name="text" type="java.lang.String" value="L&#x1b0;u l&#x1ea1;i"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnUpdateScoreMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="boxStatus">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="3">
+                    <StringItem index="0" value="C&#x1ead;p nh&#x1ead;t"/>
+                    <StringItem index="1" value="Kh&#xf4;ng c&#x1ead;p nh&#x1ead;t"/>
+                    <StringItem index="2" value="Ch&#x1b0;a xem"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -1669,6 +1638,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng xu&#x1ea5;t"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnLogOutMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JPasswordField" name="jPasswordField2">
             </Component>

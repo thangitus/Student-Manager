@@ -6,6 +6,7 @@ import Data.entities.TaiKhoan;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import javax.persistence.NoResultException;
 import java.util.List;
 
 public class TaiKhoanDAOImpl implements TaiKhoanDAO {
@@ -37,11 +38,17 @@ public class TaiKhoanDAOImpl implements TaiKhoanDAO {
       session.flush();
    }
    @Override
-   public TaiKhoan getByTaiKhoan(String taiKhoan) {
+   public TaiKhoan getByTaiKhoan(String username) {
       String sql = String.format("from %s tk where tk.taiKhoan = :taiKhoan", TaiKhoan.class.getName());
       Query query = session.createQuery(sql);
-      query.setParameter("taiKhoan", taiKhoan);
-
-      return (TaiKhoan) query.getSingleResult();
+      query.setParameter("taiKhoan", username);
+      TaiKhoan taiKhoan;
+      try {
+         taiKhoan= (TaiKhoan) query.getSingleResult();
+      }catch (NoResultException e)
+      {
+         return null;
+      }
+      return  taiKhoan;
    }
 }
