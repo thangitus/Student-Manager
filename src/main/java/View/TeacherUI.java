@@ -32,6 +32,7 @@ import java.util.function.Consumer;
  * @author Thang Nguyen
  */
 public class TeacherUI extends JFrame {
+
    /**
     * Creates new form Main
     */

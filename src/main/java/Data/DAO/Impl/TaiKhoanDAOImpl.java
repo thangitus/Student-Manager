@@ -8,7 +8,7 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 
-class TaiKhoanDAOImpl implements TaiKhoanDAO {
+public class TaiKhoanDAOImpl implements TaiKhoanDAO {
    private static Session session;
    public static void setSession(Session session) {
       TaiKhoanDAOImpl.session = session;
@@ -38,7 +38,7 @@ class TaiKhoanDAOImpl implements TaiKhoanDAO {
    }
    @Override
    public TaiKhoan getByTaiKhoan(String taiKhoan) {
-      String sql = String.format("from %s tk where tk.TaiKhoan = :taiKhoan", TaiKhoan.class.getName());
+      String sql = String.format("from %s tk where tk.taiKhoan = :taiKhoan", TaiKhoan.class.getName());
       Query query = session.createQuery(sql);
       query.setParameter("taiKhoan", taiKhoan);
 
